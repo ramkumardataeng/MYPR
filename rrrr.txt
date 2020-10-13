@@ -1,7 +1,7 @@
  select  a.LOB, b.DCM_CLIENT_ID,a.abfsg_lob_id,a.full_name,b.DCM_DBM_ID  from DMS_CUSTOMER_DEDUPE_DET a inner join 
 	[dbo].[DMS_CLIENT_MASTER] b on b.DCM_CLIENT_ID=a.clientid   where b.DCM_CLIENT_ID='1015448415'
 
-
+----ramkumar
 	select *   from DMS_CUSTOMER_DEDUPE_DET;
 
 
