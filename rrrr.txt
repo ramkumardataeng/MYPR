@@ -1,0 +1,124 @@
+ select  a.LOB, b.DCM_CLIENT_ID,a.abfsg_lob_id,a.full_name,b.DCM_DBM_ID  from DMS_CUSTOMER_DEDUPE_DET a inner join 
+	[dbo].[DMS_CLIENT_MASTER] b on b.DCM_CLIENT_ID=a.clientid   where b.DCM_CLIENT_ID='1015448415'
+
+
+	select *   from DMS_CUSTOMER_DEDUPE_DET;
+
+
+
+	SELECT    * FROM 
+	DMS_GOLDEN_MASTER V inner JOIN [DMS_CLIENT_MASTER] B 
+	ON V.DCM_CLIENT_ID=B.DCM_CLIENT_ID
+	 AND V.DCM_DBM_ID=B.DCM_DBM_ID
+  WHERE B.DCM_CLIENT_ID='1036061311'
+  
+   GROUP BY  V.DCM_CLIENT_ID,V.lob HAVING COUNT(1)>2
+
+
+   SELECT * FROM 1036161517
+	
+select * from [DMS_CLIENT_MASTER] where DCM_CLIENT_ID='1036061311';
+	SELECT * FROM DMS_GOLDEN_MASTER WHERE DCM_CLIENT_ID='1036061311';
+
+	SELECT * FROM DMS_GOLDEN_MASTER WHERE DCM_CLIENT_ID='798300';
+
+	SELECT * FROM DMS_GOLDEN_MASTER WHERE DCM_CLIENT_ID='0337502267';
+
+	SELECT * FROM  DMS_GOLDEN_MASTER WHERE DCM_CLIENT_ID='1015594971'
+
+
+
+	 select  a.LOB, b.DCM_CLIENT_ID,a.abfsg_lob_id,a.full_name,b.DCM_DBM_ID,
+
+	(case when LOB='ABFL' then '4'
+	WHEN LOB='ABHIL' then '2'
+	WHEN LOB='ABML' then '6'
+	WHEN LOB='HFC' then '5'
+	WHEN LOb='BSLI' then '1'
+	WHEN LOB='BSLAMC' then '3' ELSE 0 END ) BM_ID
+	     DMS_GOLDEN_MASTER    from DMS_CUSTOMER_DEDUPE_DET a inner join 
+	[dbo].[DMS_CLIENT_MASTER] b on b.DCM_CLIENT_ID=a.clientid  
+
+	ABFL 4
+ABHIL 2
+ABML  6
+ABMML
+BSLAMC  3
+BSLI 1
+HFC 5
+PMS
+
+
+
+SELECT B.DCM_CLIENT_ID,lob,abfsg_lob_id,COUNT(1) FROM 
+	DMS_GOLDEN_MASTER V INNER JOIN [DMS_CLIENT_MASTER] B 
+	ON V.DCM_CLIENT_ID=B.DCM_CLIENT_ID
+	 AND V.BM_id=B.DCM_DBM_ID
+   GROUP BY  B.DCM_CLIENT_ID,lob,abfsg_lob_iD HAVING COUNT(1)=3
+
+
+
+
+
+
+
+-----------------------------------------------
+
+SELECT  CLIENTID,lob,count(distinct abfsg_lob_id)   FROM 
+	DMS_CUSTOMER_DEDUPE V INNER JOIN [DMS_CLIENT_MASTER] B 
+	ON V.CLIENTID=B.DCM_CLIENT_ID
+	 ---WHERE CLIENTID='1003132
+	    GROUP BY  V.CLIENTID,lob having  count(distinct abfsg_lob_id)>4
+
+SELECT * FROM  DMS_CUSTOMER_DEDUPE where concat(CLIENTID,lob) in(
+           
+with res as(		
+SELECT  V.CLIENTID,v.lob FROM 
+	DMS_CUSTOMER_DEDUPE V INNER JOIN [DMS_CLIENT_MASTER] B 
+	ON V.CLIENTID=B.DCM_CLIENT_ID
+	-- WHERE CLIENTID='1003132'
+	    GROUP BY  V.CLIENTID,V.lob having  count(distinct V.abfsg_lob_id)>4)
+		
+		select distinct h.* from  res   r 
+		inner join DMS_CUSTOMER_DEDUPE h on r.clientid=h.clientid and r.lob=h.lob
+
+------------------------------------------------------------------
+SELECT   V.DCM_CLIENT_ID,V.lob FROM 
+	DMS_GOLDEN_MASTER V inner JOIN [DMS_CLIENT_MASTER] B 
+	ON V.DCM_CLIENT_ID=B.DCM_CLIENT_ID
+	 AND V.DCM_DBM_ID=B.DCM_DBM_ID
+  WHERE B.DCM_CLIENT_ID='1036061311'
+  
+   GROUP BY  V.DCM_CLIENT_ID,V.lob HAVING COUNT(1)>2
+
+
+   SELECT * FROM 1036161517
+	
+select * from [DMS_CLIENT_MASTER] where DCM_CLIENT_ID='1036061311';
+	SELECT * FROM DMS_GOLDEN_MASTER WHERE DCM_CLIENT_ID='1036061311';
+
+	SELECT * FROM DMS_GOLDEN_MASTER WHERE DCM_CLIENT_ID='798300';
+
+	SELECT * FROM DMS_GOLDEN_MASTER WHERE DCM_CLIENT_ID='0337502267';
+
+	SELECT * FROM  DMS_GOLDEN_MASTER WHERE DCM_CLIENT_ID='1015594971'
+
+
+
+SELECT  CLIENTID,lob,count(distinct abfsg_lob_id)   FROM 
+	DMS_CUSTOMER_DEDUPE V INNER JOIN [DMS_CLIENT_MASTER] B 
+	ON V.CLIENTID=B.DCM_CLIENT_ID
+	 ---WHERE CLIENTID='1003132
+	    GROUP BY  V.CLIENTID,lob having  count(distinct abfsg_lob_id)>4
+
+SELECT * FROM  DMS_CUSTOMER_DEDUPE where concat(CLIENTID,lob) in(
+           
+with res as(		
+SELECT  V.CLIENTID,v.lob FROM 
+	DMS_CUSTOMER_DEDUPE V INNER JOIN [DMS_CLIENT_MASTER] B 
+	ON V.CLIENTID=B.DCM_CLIENT_ID
+	-- WHERE CLIENTID='1003132'
+	    GROUP BY  V.CLIENTID,V.lob having  count(distinct V.abfsg_lob_id)>4)
+		
+		select distinct h.* from  res   r 
+		inner join DMS_CUSTOMER_DEDUPE h on r.clientid=h.clientid and r.lob=h.lob
